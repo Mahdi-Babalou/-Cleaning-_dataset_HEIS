@@ -35,7 +35,7 @@ This section we load  r data.
 
 ```{r , echo=TRUE}
 #data_load
-load("E:/proposal/data/98.RData")
+load("../data/98.RData")
 
 ```
 ### Clear not necessary data
