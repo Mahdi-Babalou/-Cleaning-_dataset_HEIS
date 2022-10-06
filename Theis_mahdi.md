@@ -1,5 +1,5 @@
 ---
-title: "Data Theis cleaning"
+title: "Data  cleaning"
 author: "mahdi Babaloo"
 date: '2022-10-04'
 
