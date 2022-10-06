@@ -13,7 +13,7 @@
 
 <meta name="date" content="2022-10-04" />
 
-<title>Data cleaning</title>
+<title>Data Theis cleaning</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -363,55 +363,51 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Data cleaning</h1>
+<h1 class="title toc-ignore">Data Theis cleaning</h1>
 <h4 class="author">mahdi Babaloo</h4>
 <h4 class="date">2022-10-04</h4>
 
 </div>
 
 
+<p><code>{r setup, include=FALSE} knitr::opts_chunk$set(echo = TRUE)</code></p>
 <div id="data-cleaning-for-year-98" class="section level1">
 <h1>Data Cleaning for year 98</h1>
 <p>First, we empty the entire memory. Then we upload the required
 packages and libraries.</p>
-<pre class="r"><code>#remove all
-rm(list=ls())
+<p>```{r message=FALSE, warning=FALSE, paged.print=FALSE} #remove all
+rm(list=ls())</p>
+<p>#Package_installation # install.packages(“dplyr”) library(“dplyr”) #
+install.packages(“tidyverse”)<br />
+library(“tidyverse”) # install.packages(“stargazer”)<br />
+library(“stargazer”) # install.packages(“haven”)<br />
+library(haven)</p>
+<pre><code>
+##  Data loading
+This section we load  r data. 
 
-#Package_installation
-# install.packages(&quot;dplyr&quot;)
-library(&quot;dplyr&quot;)
-# install.packages(&quot;tidyverse&quot;)  
-library(&quot;tidyverse&quot;)
-# install.packages(&quot;stargazer&quot;)  
-library(&quot;stargazer&quot;)
-# install.packages(&quot;haven&quot;)  
-library(haven)</code></pre>
-<div id="data-loading" class="section level2">
-<h2>Data loading</h2>
-<p>This section we load r data.</p>
-<pre class="r"><code>#data_load
-load(&quot;E:/proposal/data/98.RData&quot;)</code></pre>
+
+```{r , echo=TRUE}
+#data_load
+load(&quot;E:/proposal/data/98.RData&quot;)
+</code></pre>
 <div id="clear-not-necessary-data" class="section level3">
 <h3>Clear not necessary data</h3>
-<pre class="r"><code>rm(&quot;U98P3S01&quot;,&quot;U98P3S02&quot;,&quot;U98P3S04&quot;,&quot;U98P3S05&quot;,&quot;U98P3S06&quot;,&quot;U98P3S07&quot;,&quot;U98P3S08&quot;,
-   &quot;U98P3S09&quot;,&quot;U98P3S10&quot;,&quot;U98P3S11&quot;,&quot;U98P3S14&quot;
-   ,&quot;U98P4S04&quot;,&quot;R98P1&quot;,&quot;R98P2&quot;,&quot;R98P3S01&quot;,&quot;R98P3S02&quot;,
-   &quot;R98P3S04&quot;,&quot;R98P3S05&quot;,&quot;R98P3S06&quot;,&quot;R98P3S07&quot;,&quot;R98P3S08&quot;,&quot;R98P3S03&quot;,
-   &quot;R98P3S09&quot;,&quot;R98P3S10&quot;,&quot;R98P3S11&quot;,&quot;R98P3S12&quot;,&quot;R98P3S14&quot;,&quot;R98P4S01&quot;,
-   &quot;R98P4S02&quot;,&quot;R98P4S03&quot;,&quot;R98P4S04&quot;,&quot;R98Data&quot;,&quot;U98P2&quot;)</code></pre>
-</div>
-</div>
-<div id="data-cleaning" class="section level2">
-<h2>Data cleaning</h2>
-<div id="division-of-provinces" class="section level3">
-<h3>Division of provinces</h3>
-<pre class="r"><code>Province &lt;- c(Markazi=&quot;00&quot;, Gilan=&quot;01&quot;, Mazandaran=&quot;02&quot;, AzarbaijanSharghi=&quot;03&quot;, AzarbaijanGharbi=&quot;04&quot;, Kermanshah=&quot;05&quot;, Kouzestan=&quot;06&quot;, Fars=&quot;07&quot;, Kerman=&quot;08&quot;, KhorasanRazavi=&quot;09&quot;,
-Esfahan=&quot;10&quot;, SistanBalouchestan=&quot;11&quot;, Kordestan=&quot;12&quot;, Hamedan=&quot;13&quot;, CharmahalBakhtiari=&quot;14&quot;,Lorestan=&quot;15&quot;, Ilam=&quot;16&quot;, KohkilouyeBoyerahamad=&quot;17&quot;, Boushehr=&quot;18&quot;, Zanjan=&quot;19&quot;, Semnan=&quot;20&quot;, Yazd=&quot;21&quot;, Hormozgan=&quot;22&quot;, Tehran=&quot;23&quot;, Ardebil=&quot;24&quot;, Qom=&quot;25&quot;, Qazvin=&quot;26&quot;,
-Golestan=&quot;27&quot;, KhorasanShomali=&quot;28&quot;, KhorasanJonoubi=&quot;29&quot;, Alborz=&quot;30&quot;)</code></pre>
-</div>
-<div id="renaming-characters" class="section level3">
-<h3>Renaming characters</h3>
-<pre class="r"><code>relation &lt;- c(Head=&quot;1&quot;, Spouse=&quot;2&quot;, Child=&quot;3&quot;, SonDaughter_inLaw=&quot;4&quot;, GrandSonDaughter=&quot;5&quot;, Parent=&quot;6&quot;, Sibling=&quot;7&quot;, OtherRelative=&quot;8&quot;, NonRelative=&quot;9&quot;)
+<p><code>{r, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE} rm(&quot;U98P3S01&quot;,&quot;U98P3S02&quot;,&quot;U98P3S04&quot;,&quot;U98P3S05&quot;,&quot;U98P3S06&quot;,&quot;U98P3S07&quot;,&quot;U98P3S08&quot;,    &quot;U98P3S09&quot;,&quot;U98P3S10&quot;,&quot;U98P3S11&quot;,&quot;U98P3S14&quot;    ,&quot;U98P4S04&quot;,&quot;R98P1&quot;,&quot;R98P2&quot;,&quot;R98P3S01&quot;,&quot;R98P3S02&quot;,    &quot;R98P3S04&quot;,&quot;R98P3S05&quot;,&quot;R98P3S06&quot;,&quot;R98P3S07&quot;,&quot;R98P3S08&quot;,&quot;R98P3S03&quot;,    &quot;R98P3S09&quot;,&quot;R98P3S10&quot;,&quot;R98P3S11&quot;,&quot;R98P3S12&quot;,&quot;R98P3S14&quot;,&quot;R98P4S01&quot;,    &quot;R98P4S02&quot;,&quot;R98P4S03&quot;,&quot;R98P4S04&quot;,&quot;R98Data&quot;,&quot;U98P2&quot;)</code>
+## Data cleaning ### Division of provinces ```{r, echo=TRUE,
+message=FALSE, warning=FALSE, paged.print=FALSE} Province &lt;-
+c(Markazi=“00”, Gilan=“01”, Mazandaran=“02”, AzarbaijanSharghi=“03”,
+AzarbaijanGharbi=“04”, Kermanshah=“05”, Kouzestan=“06”, Fars=“07”,
+Kerman=“08”, KhorasanRazavi=“09”, Esfahan=“10”, SistanBalouchestan=“11”,
+Kordestan=“12”, Hamedan=“13”, CharmahalBakhtiari=“14”,Lorestan=“15”,
+Ilam=“16”, KohkilouyeBoyerahamad=“17”, Boushehr=“18”, Zanjan=“19”,
+Semnan=“20”, Yazd=“21”, Hormozgan=“22”, Tehran=“23”, Ardebil=“24”,
+Qom=“25”, Qazvin=“26”, Golestan=“27”, KhorasanShomali=“28”,
+KhorasanJonoubi=“29”, Alborz=“30”)</p>
+<pre><code>
+### Renaming characters
+```{r, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE}
+relation &lt;- c(Head=&quot;1&quot;, Spouse=&quot;2&quot;, Child=&quot;3&quot;, SonDaughter_inLaw=&quot;4&quot;, GrandSonDaughter=&quot;5&quot;, Parent=&quot;6&quot;, Sibling=&quot;7&quot;, OtherRelative=&quot;8&quot;, NonRelative=&quot;9&quot;)
 gender &lt;- c(Male=&quot;1&quot;, Female=&quot;2&quot;)
 literacy &lt;- c(literate=&quot;1&quot;, illiterate=&quot;2&quot;)
 yesno &lt;- c(Yes=&quot;1&quot;, No=&quot;2&quot;)
@@ -421,52 +417,22 @@ marital &lt;- c(Married =&quot;1&quot;, Widowed=&quot;2&quot;, Divorced=&quot;3&
 </div>
 <div id="census-time" class="section level3">
 <h3>Census time</h3>
-</div>
-<div id="cleaning-rename" class="section level3">
-<h3>cleaning &amp; rename</h3>
-<pre class="r"><code>U98P1 &lt;- U98P1 %&gt;% 
-  rename(
-    member = DYCOL01,  relation = DYCOL03,      gender = DYCOL04,
-    age = DYCOL05,     literacy = DYCOL06,      studying = DYCOL07,
-    degree = DYCOL08,  occupationalst = DYCOL09,maritalst = DYCOL10)%&gt;% 
-  mutate(across(where(is.character), as.integer),
-         across(c(relation,gender,literacy,studying,degree,occupationalst,maritalst), as.factor),
-         relation = fct_recode(relation, !!!relation), 
-         gender = fct_recode(gender, !!!gender),
-         literacy = fct_recode(literacy, !!!literacy), 
-         studying = fct_recode(studying, !!!yesno),
-         degree = fct_recode(degree, !!!education), 
-         occupationalst = fct_recode(occupationalst, !!!occupation),
-         maritalst = fct_recode(maritalst, !!!marital))</code></pre>
-</div>
-</div>
-<div id="household_without_childeren" class="section level2">
-<h2>household_without_childeren</h2>
-<div id="part1" class="section level3">
-<h3>part1</h3>
-<pre class="r"><code>U98P1 &lt;- U98P1 %&gt;%
-  mutate(Just_Married1 = case_when(
-    relation == &quot;Child&quot; ~ 0 ,           relation == &quot;SonDaughter_inLaw&quot; ~ 0,
-    relation == &quot;GrandSonDaughter&quot; ~ 0, relation == &quot;Parent&quot; ~ 0 ,
-    relation == &quot;Sibling&quot; ~ 0,          relation == &quot;OtherRelative&quot; ~ 0 ,
-    relation == &quot;NonRelative&quot; ~ 0 ,     relation == &quot;Head&quot; ~ 1,
-    relation == &quot;Spouse&quot; ~ 1))%&gt;%
-  select(Address,member,relation,Just_Married1,everything())</code></pre>
-</div>
-<div id="part2" class="section level3">
-<h3>part2</h3>
-<pre class="r"><code>U98P1 &lt;- U98P1%&gt;%
-  mutate(Just_Married2 = case_when(
-    relation == &quot;Child&quot; ~ 1 ,          relation == &quot;SonDaughter_inLaw&quot; ~ 1,
-    relation == &quot;GrandSonDaughter&quot; ~ 1,relation == &quot;Parent&quot; ~ 1 ,
-    relation == &quot;Sibling&quot; ~ 1,         relation == &quot;OtherRelative&quot; ~ 1 ,
-    relation == &quot;NonRelative&quot; ~ 1 ,    relation == &quot;Head&quot; ~ 0,
-    relation == &quot;Spouse&quot; ~ 0))%&gt;%
-  select(Address,member,relation,Just_Married2,everything())</code></pre>
-</div>
-<div id="part3" class="section level3">
-<h3>part3</h3>
-<pre class="r"><code>U98P1 &lt;- U98P1%&gt;%
+<p><code>{r echo=FALSE, message=TRUE, warning=TRUE, paged.print=TRUE} U98Data &lt;- U98Data %&gt;%    rename(month = MahMorajeh) %&gt;%   mutate(province = fct_recode(as.factor(substr(Address, 2, 3)), !!!Province),          town = as.integer(substr(Address, 4, 5)))%&gt;%   select(Address,month,province)</code>
+### cleaning &amp; rename
+<code>{r, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE} U98P1 &lt;- U98P1 %&gt;%    rename(     member = DYCOL01,  relation = DYCOL03,      gender = DYCOL04,     age = DYCOL05,     literacy = DYCOL06,      studying = DYCOL07,     degree = DYCOL08,  occupationalst = DYCOL09,maritalst = DYCOL10)%&gt;%    mutate(across(where(is.character), as.integer),          across(c(relation,gender,literacy,studying,degree,occupationalst,maritalst), as.factor),          relation = fct_recode(relation, !!!relation),           gender = fct_recode(gender, !!!gender),          literacy = fct_recode(literacy, !!!literacy),           studying = fct_recode(studying, !!!yesno),          degree = fct_recode(degree, !!!education),           occupationalst = fct_recode(occupationalst, !!!occupation),          maritalst = fct_recode(maritalst, !!!marital))</code>
+## household_without_childeren ### part1
+<code>{r, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE} U98P1 &lt;- U98P1 %&gt;%   mutate(Just_Married1 = case_when(     relation == &quot;Child&quot; ~ 0 ,           relation == &quot;SonDaughter_inLaw&quot; ~ 0,     relation == &quot;GrandSonDaughter&quot; ~ 0, relation == &quot;Parent&quot; ~ 0 ,     relation == &quot;Sibling&quot; ~ 0,          relation == &quot;OtherRelative&quot; ~ 0 ,     relation == &quot;NonRelative&quot; ~ 0 ,     relation == &quot;Head&quot; ~ 1,     relation == &quot;Spouse&quot; ~ 1))%&gt;%   select(Address,member,relation,Just_Married1,everything())</code>
+### part2 ```{r, echo=TRUE, message=FALSE, warning=FALSE,
+paged.print=FALSE}</p>
+<p>U98P1 &lt;- U98P1%&gt;% mutate(Just_Married2 = case_when( relation ==
+“Child” ~ 1 , relation == “SonDaughter_inLaw” ~ 1, relation ==
+“GrandSonDaughter” ~ 1,relation == “Parent” ~ 1 , relation == “Sibling”
+~ 1, relation == “OtherRelative” ~ 1 , relation == “NonRelative” ~ 1 ,
+relation == “Head” ~ 0, relation == “Spouse” ~ 0))%&gt;%
+select(Address,member,relation,Just_Married2,everything())</p>
+<pre><code>### part3
+```{r, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE}
+U98P1 &lt;- U98P1%&gt;%
   mutate_at(vars(Address),as.character)%&gt;%
   group_by(Address)%&gt;%
   dplyr::mutate(Indicator1 = sum(Just_Married1,na.rm = T),
@@ -475,9 +441,7 @@ marital &lt;- c(Married =&quot;1&quot;, Widowed=&quot;2&quot;, Divorced=&quot;3&
 </div>
 <div id="final-part" class="section level3">
 <h3>Final part</h3>
-<pre class="r"><code>U98P1&lt;- U98P1%&gt;%
-  filter(Indicator1 == 2 &amp; Indicator2 == 0)</code></pre>
-</div>
+<p><code>{r, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE} U98P1&lt;- U98P1%&gt;%   filter(Indicator1 == 2 &amp; Indicator2 == 0)</code></p>
 </div>
 <div id="income" class="section level2">
 <h2>Income</h2>
@@ -486,98 +450,56 @@ marital &lt;- c(Married =&quot;1&quot;, Widowed=&quot;2&quot;, Divorced=&quot;3&
 </div>
 <div id="change-data-type" class="section level3">
 <h3>Change data type</h3>
-<pre class="r"><code>class(U98P4S01$Address) = &quot;double&quot;</code></pre>
-<p>First Table</p>
-<pre class="r"><code>income_wage_earner &lt;- U98P4S01%&gt;%
-  rename(
-    member     =DYCOL01,
-    income     =DYCOL15
-  )%&gt;%
-  select(Address,member,income)%&gt;%
-  mutate(income = replace_na(income,0))</code></pre>
+<p><code>{r, warning=FALSE} class(U98P4S01$Address) = &quot;double&quot;</code>
+First Table
+<code>{r, warning=FALSE} income_wage_earner &lt;- U98P4S01%&gt;%   rename(     member     =DYCOL01,     income     =DYCOL15   )%&gt;%   select(Address,member,income)%&gt;%   mutate(income = replace_na(income,0))</code></p>
 </div>
 <div id="secound-table" class="section level3">
 <h3>secound table</h3>
 <div id="selfe_mployed-people-who-selfemployed" class="section level4">
 <h4>selfe_mployed: people who selfemployed</h4>
-<pre class="r"><code>income_self_employed &lt;-U98P4S02 %&gt;%
-  rename(
-    member     =DYCOL01,
-    income     =DYCOL15 )%&gt;%
-  select(Address,member,income)%&gt;%
-  mutate(income = replace_na(income,0))</code></pre>
+<p><code>{r, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE} income_self_employed &lt;-U98P4S02 %&gt;%   rename(     member     =DYCOL01,     income     =DYCOL15 )%&gt;%   select(Address,member,income)%&gt;%   mutate(income = replace_na(income,0))</code></p>
 </div>
 </div>
 <div id="change-double-forcharacter" class="section level3">
 <h3>change double forcharacter</h3>
-<pre class="r"><code>income_wage_earner &lt;-income_wage_earner %&gt;% mutate(income =as.integer(income))</code></pre>
+<p><code>{r, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE} income_wage_earner &lt;-income_wage_earner %&gt;% mutate(income =as.integer(income))</code></p>
 </div>
 <div id="third-table" class="section level3">
 <h3>third table</h3>
 <div id="other-income" class="section level4">
 <h4>other income</h4>
-<pre class="r"><code>other&lt;-U98P4S03 %&gt;%
-  rename(
-    member     =DYCOL01,
-    income     =DYCOL03,
-  )%&gt;%
-  select(Address,member,income)%&gt;%
-  mutate(income = replace_na(income,0))</code></pre>
+<p><code>{r, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE} other&lt;-U98P4S03 %&gt;%   rename(     member     =DYCOL01,     income     =DYCOL03,   )%&gt;%   select(Address,member,income)%&gt;%   mutate(income = replace_na(income,0))</code>
+### creat a column by bindind columns of income_wage_earner and
+income_self_employed and other income
+<code>{r, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE} income_table&lt;-bind_rows(income_wage_earner,income_self_employed,other )</code>
+### deleting income_self_emolyed and income_wage_earner and other
+<code>{r, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE} rm(income_wage_earner,income_self_employed,other)</code>
+### Change Data type
+<code>{r, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE} income_table &lt;- income_table %&gt;% mutate(income =as.integer(income))</code>
+## calculate total income
+<code>{r, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE} income_table &lt;- income_table%&gt;%   group_by(Address,member)%&gt;%    summarise(total_income = sum(income))</code>
+### change data type
+<code>{r, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE} class(U98P1$Address) = &quot;double&quot;</code>
+### merging data
+<code>{r, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE} Data&lt;-left_join(   x=U98P1,   y=income_table,   by=c(&quot;Address&quot;,&quot;member&quot;) )</code></p>
 </div>
-</div>
-<div id="creat-a-column-by-bindind-columns-of-income_wage_earner-and-income_self_employed-and-other-income" class="section level3">
-<h3>creat a column by bindind columns of income_wage_earner and
-income_self_employed and other income</h3>
-<pre class="r"><code>income_table&lt;-bind_rows(income_wage_earner,income_self_employed,other )</code></pre>
-</div>
-<div id="deleting-income_self_emolyed-and-income_wage_earner-and-other" class="section level3">
-<h3>deleting income_self_emolyed and income_wage_earner and other</h3>
-<pre class="r"><code>rm(income_wage_earner,income_self_employed,other)</code></pre>
-</div>
-<div id="change-data-type-1" class="section level3">
-<h3>Change Data type</h3>
-<pre class="r"><code>income_table &lt;- income_table %&gt;% mutate(income =as.integer(income))</code></pre>
-</div>
-</div>
-<div id="calculate-total-income" class="section level2">
-<h2>calculate total income</h2>
-<pre class="r"><code>income_table &lt;- income_table%&gt;%
-  group_by(Address,member)%&gt;% 
-  summarise(total_income = sum(income))</code></pre>
-<div id="change-data-type-2" class="section level3">
-<h3>change data type</h3>
-<pre class="r"><code>class(U98P1$Address) = &quot;double&quot;</code></pre>
-</div>
-<div id="merging-data" class="section level3">
-<h3>merging data</h3>
-<pre class="r"><code>Data&lt;-left_join(
-  x=U98P1,
-  y=income_table,
-  by=c(&quot;Address&quot;,&quot;member&quot;)
-)</code></pre>
 </div>
 </div>
 <div id="clothes-expendutre" class="section level2">
 <h2>clothes expendutre</h2>
 <div id="third-table-1" class="section level3">
 <h3>third table</h3>
-<pre class="r"><code>U98P3S03&lt;-U98P3S03%&gt;%
-  rename(code = DYCOL01,
-         purchased = DYCOL02,
-         value = DYCOL03)
-
-U98P3S12&lt;-U98P3S12%&gt;%
-  rename(code = DYCOL01,
-         purchased = DYCOL02,
-         value = DYCOL03)
-U98P3S13&lt;-U98P3S13%&gt;%
-  rename(code = DYCOL01,
-         purchased = DYCOL02,
-         value = DYCOL03)</code></pre>
-</div>
-<div id="women-clothes-expendture-shoe" class="section level3">
-<h3>women clothes expendture &amp; shoe</h3>
-<pre class="r"><code>#subgroup1
+<p>```{r, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE}
+U98P3S03&lt;-U98P3S03%&gt;% rename(code = DYCOL01, purchased = DYCOL02,
+value = DYCOL03)</p>
+<p>U98P3S12&lt;-U98P3S12%&gt;% rename(code = DYCOL01, purchased =
+DYCOL02, value = DYCOL03) U98P3S13&lt;-U98P3S13%&gt;% rename(code =
+DYCOL01, purchased = DYCOL02, value = DYCOL03)</p>
+<pre><code>
+### women clothes expendture &amp; shoe
+```{r, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE}
+#subgroup1
 ag1sp_1_1&lt;-filter(U98P3S03,code==31232|code==31233|code==31234|code==31235|code==31415)%&gt;%
   group_by(Address) %&gt;%
   summarise(ag1sp_1_1= sum(value))
@@ -620,64 +542,18 @@ ag1sp_1_9&lt;- filter(U98P3S12,
 </div>
 <div id="men-clothes-expendture_subgroups" class="section level2">
 <h2>men clothes expendture_subgroups</h2>
-<pre class="r"><code>#subgroup1
-ag2sp_1_1 &lt;- filter(U98P3S03,code==31211|code==31212|code==31213|code==31216|code==31414)%&gt;%
-  group_by(Address) %&gt;% 
-  summarise(ag2sp_1_1= sum(value))
-#subgroup2
-ag2sp_1_2 &lt;- filter(U98P3S03,code==31215|code==31214|code==31217|code==31218|code==31219)%&gt;%
-  group_by(Address) %&gt;% 
-  summarise(ag2sp_1_2= sum(value))
-#subgroup3
-ag2sp_1_3 &lt;- filter(U98P3S03,code==31221|code==31213|code==31313|code==31111|code==31115)%&gt;%
-  group_by(Address) %&gt;% 
-  summarise(ag2sp_1_3= sum(value))
-#subgroup4
-ag2sp_1_4 &lt;- filter(U98P3S03,code==32111|code==32112|code==32113|code==32114)%&gt;%
-  group_by(Address) %&gt;% 
-  summarise(ag2sp_1_4= sum(value))
-#subgroup5
-ag2sp_1_5&lt;- filter(U98P3S12,
-                   code==121113|code==123216|code==123227)%&gt;%
-  group_by(Address) %&gt;% 
-  summarise(ag2sp_1_5= sum(value))
-#subgroup6
-ag2sp_1_6&lt;- filter(U98P3S13,
-                   code==31415)%&gt;%
-  group_by(Address)</code></pre>
+<p><code>{r, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE} #subgroup1 ag2sp_1_1 &lt;- filter(U98P3S03,code==31211|code==31212|code==31213|code==31216|code==31414)%&gt;%   group_by(Address) %&gt;%    summarise(ag2sp_1_1= sum(value)) #subgroup2 ag2sp_1_2 &lt;- filter(U98P3S03,code==31215|code==31214|code==31217|code==31218|code==31219)%&gt;%   group_by(Address) %&gt;%    summarise(ag2sp_1_2= sum(value)) #subgroup3 ag2sp_1_3 &lt;- filter(U98P3S03,code==31221|code==31213|code==31313|code==31111|code==31115)%&gt;%   group_by(Address) %&gt;%    summarise(ag2sp_1_3= sum(value)) #subgroup4 ag2sp_1_4 &lt;- filter(U98P3S03,code==32111|code==32112|code==32113|code==32114)%&gt;%   group_by(Address) %&gt;%    summarise(ag2sp_1_4= sum(value)) #subgroup5 ag2sp_1_5&lt;- filter(U98P3S12,                    code==121113|code==123216|code==123227)%&gt;%   group_by(Address) %&gt;%    summarise(ag2sp_1_5= sum(value)) #subgroup6 ag2sp_1_6&lt;- filter(U98P3S13,                    code==31415)%&gt;%   group_by(Address)</code></p>
 <div id="merging_data" class="section level3">
 <h3>merging_data</h3>
-<pre class="r"><code>##### install.packages(&quot;plyr&quot;)
-library(plyr)
-#merging_data
-data&lt;-join_all(list(ag1sp_1_1,ag1sp_1_2,ag1sp_1_3,ag1sp_1_4,ag1sp_1_5,
-                    ag1sp_1_6,ag1sp_1_7,ag1sp_1_8,ag1sp_1_9,ag2sp_1_1,
-                    ag2sp_1_2,ag2sp_1_3,ag2sp_1_4,ag2sp_1_5,ag2sp_1_6), by=&#39;Address&#39;, type=&#39;left&#39;)
-#CLEARING_DATA
-remove(ag1sp_1_1,ag1sp_1_2,ag1sp_1_3,ag1sp_1_4,ag1sp_1_5,
-       ag1sp_1_6,ag1sp_1_7,ag1sp_1_8,ag2sp_1_1,ag1sp_1_9,ag2sp_1_2,ag2sp_1_3,
-       ag2sp_1_4,ag2sp_1_5,ag2sp_1_6)</code></pre>
+<p><code>{r, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE} ##### install.packages(&quot;plyr&quot;) library(plyr) #merging_data data&lt;-join_all(list(ag1sp_1_1,ag1sp_1_2,ag1sp_1_3,ag1sp_1_4,ag1sp_1_5,                     ag1sp_1_6,ag1sp_1_7,ag1sp_1_8,ag1sp_1_9,ag2sp_1_1,                     ag2sp_1_2,ag2sp_1_3,ag2sp_1_4,ag2sp_1_5,ag2sp_1_6), by=&#39;Address&#39;, type=&#39;left&#39;) #CLEARING_DATA remove(ag1sp_1_1,ag1sp_1_2,ag1sp_1_3,ag1sp_1_4,ag1sp_1_5,        ag1sp_1_6,ag1sp_1_7,ag1sp_1_8,ag2sp_1_1,ag1sp_1_9,ag2sp_1_2,ag2sp_1_3,        ag2sp_1_4,ag2sp_1_5,ag2sp_1_6)</code>
+## Combinig Data and save clean data The combing data set with
+expenditure and income family and add month in data.</p>
+<p>```{r, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE}
+class(U98P1$Address) = “double” Data&lt;-left_join( x=Data, y=data,
+by=c(“Address”) ) Data&lt;-left_join( x=Data, y=U98Data, by=c(“Address”)
+) # saving data in stata file</p>
+<p>#write_dta(Data,“98.dta”) ``` The same work on 1399 data.</p>
 </div>
-</div>
-<div id="combinig-data-and-save-clean-data" class="section level2">
-<h2>Combinig Data and save clean data</h2>
-<p>The combing data set with expenditure and income family and add month
-in data.</p>
-<pre class="r"><code> class(U98P1$Address) = &quot;double&quot;
-Data&lt;-left_join(
-  x=Data,
-  y=data,
-  by=c(&quot;Address&quot;)
-)
-Data&lt;-left_join(
-  x=Data,
-  y=U98Data,
-  by=c(&quot;Address&quot;)
-)
-# saving data in stata file 
-
-#write_dta(Data,&quot;98.dta&quot;)</code></pre>
-<p>The same work on 1399 data.</p>
 </div>
 </div>
 

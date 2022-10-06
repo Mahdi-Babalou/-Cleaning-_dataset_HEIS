@@ -2,9 +2,7 @@
 title: "Data Theis cleaning"
 author: "mahdi Babaloo"
 date: '2022-10-04'
-output:
-  html_document: default
-  pdf_document: default
+
 ---
 
 ```{r setup, include=FALSE}
