@@ -2,7 +2,7 @@
 title: "Data  cleaning"
 author: "mahdi Babaloo"
 date: '2022-10-04'
-
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
@@ -174,7 +174,7 @@ other<-U98P4S03 %>%
   select(Address,member,income)%>%
   mutate(income = replace_na(income,0))
 ```
-### creat a column by bindind columns of income_wage_earner and income_self_employed and other income 
+### create a column by bindind columns of income_wage_earner and income_self_employed and other income 
 ```{r, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE}
 income_table<-bind_rows(income_wage_earner,income_self_employed,other )
 ```
