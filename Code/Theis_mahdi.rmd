@@ -2,7 +2,9 @@
 title: "Data  cleaning"
 author: "mahdi Babaloo"
 date: '2022-10-04'
-
+output:
+  html_document:
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
@@ -26,6 +28,11 @@ library("tidyverse")
 library("stargazer")
 # install.packages("haven")  
 library(haven)
+#install.packages("remotes") 
+library(remotes) 
+#install_github("hemken/Statamarkdown")
+library(Statamarkdown) 
+
 
 ```
 
@@ -329,3 +336,4 @@ Data<-left_join(
 #write_dta(Data,"98.dta")
 ```
 The same work on 1399 data.
+

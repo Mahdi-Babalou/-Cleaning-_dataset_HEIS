@@ -2,7 +2,9 @@
 title: "Data  cleaning"
 author: "mahdi Babaloo"
 date: '2022-10-04'
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
@@ -329,3 +331,12 @@ Data<-left_join(
 #write_dta(Data,"98.dta")
 ```
 The same work on 1399 data.
+
+
+
+
+
+
+
+
+
